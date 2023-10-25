@@ -4,6 +4,8 @@ namespace App\src\Controller;
 
 use App\src\Service\Products\ShopifyProductsService;
 use App\src\Service\Products\ShopifyProductsServiceInterface;
+use App\src\Storage\Storage;
+use Fiber;
 
 class ShopifyProductsController
 {
@@ -18,10 +20,18 @@ class ShopifyProductsController
     {
         $products = $this->service->fetchProducts();
 
-        return json_encode($products);
+        $encodedProducts = json_encode($products);
+
+        $fiber = new Fiber(function() use ($encodedProducts): void  {
+            $storage = new Storage();
+            $storage->setData('products', $encodedProducts);
+        });
+        $fiber->start();
+
+        return $encodedProducts;
     }
 
-    public function getStatistics()
+    public function getStatistics(): string
     {
         $products = $this->service->fetchProducts();
         $sum = 0;
@@ -48,6 +58,14 @@ class ShopifyProductsController
                 $sum += $var->price;
                 $count++;
             }
+        }
+
+        if (!isset($max)) {
+            $max = 0;
+        }
+
+        if (!isset($min)) {
+            $min = 0;
         }
 
         $avg = number_format((float)$sum/$count, 2, '.', '');;
