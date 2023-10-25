@@ -6,3 +6,9 @@ table, th, td {
 table td, table th {
     padding: 6px;
 }
+
+#container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

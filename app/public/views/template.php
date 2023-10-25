@@ -9,10 +9,11 @@
 <body>
 <header>
     <button onclick="fetchProducts()">Fetch products</button>
+    <button onclick="getStatistics()">Get statistics</button>
 </header>
 <div id="container">
-    <table>
-        <thead>
+        <table>
+            <thead>
             <tr>
                 <th>
                     Product id
@@ -30,12 +31,32 @@
                     Variant price
                 </th>
             </tr>
-        </thead>
-        <tbody id="tbody">
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+        <div>
+            <table id="statistics">
+                <thead>
+                <th>Minimum price</th>
+                <th>Maximum price</th>
+                <th>Average price</th>
+                </thead>
+                <tbody>
+                <td id="min-price">
 
-        </tbody>
+                </td>
+                <td id="max-price">
 
-    </table>
+                </td>
+                <td id="avg-price">
+
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+
+
 </div>
 </body>
 </html>

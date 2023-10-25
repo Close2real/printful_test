@@ -61,3 +61,22 @@ function fetchProducts() {
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.send();
 }
+
+function getStatistics() {
+  let xhr = new XMLHttpRequest();
+  let url = '/products/statistics';
+  xhr.open("GET", url, true);
+
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const res = JSON.parse(this.responseText);
+
+      document.getElementById('min-price').innerHTML = res.min;
+      document.getElementById('max-price').innerHTML = res.max;
+      document.getElementById('avg-price').innerHTML = res.avg;
+    }
+  }
+
+  xhr.setRequestHeader('Accept', 'application/json');
+  xhr.send();
+}
