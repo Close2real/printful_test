@@ -1,7 +1,18 @@
 <?php
 
-use App\src\Service\Products\ShopifyProductsService;
+use App\src\Controller\ShopifyProductsController;
 
 require(__DIR__ . "/../../vendor/autoload.php");
 
-print((new ShopifyProductsService())->fetchProducts());
+switch($_SERVER['REQUEST_URI']) {
+    case '/':
+        include('views/template.php');
+        break;
+    case '/products':
+        $controller = new ShopifyProductsController();
+        header("Content-type: application/json; charset=utf-8");
+        echo $controller->fetchProducts();
+        break;
+    default:
+        include('views/404.php');
+}
