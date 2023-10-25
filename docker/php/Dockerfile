@@ -3,6 +3,6 @@ FROM php:8-cli
 RUN apt-get update && apt-get install -y curl git zip \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-RUN composer dump-autoload --optimize
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
