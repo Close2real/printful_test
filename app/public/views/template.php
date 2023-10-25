@@ -18,10 +18,17 @@
                     Product id
                 </th>
                 <th>
-                    Title
+                    Product title
                 </th>
-            </tr>
-            <tr>
+                <th>
+                    Variant id
+                </th>
+                <th>
+                    Variant title
+                </th>
+                <th>
+                    Variant price
+                </th>
             </tr>
         </thead>
         <tbody id="tbody">
