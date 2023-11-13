@@ -1,4 +1,5 @@
-Test application based on Php 8, phpunit and guzzle only using shopify api
+Test application based on Php 8, phpunit and guzzle only.
+Using shopify api for data request
 
 1. Clone this repository
 
