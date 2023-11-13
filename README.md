@@ -1,4 +1,4 @@
-Printful test application
+Test application based on Php 8, phpunit and guzzle only using shopify api
 
 1. Clone this repository
 
